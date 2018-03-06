@@ -24,7 +24,12 @@ stockData : [
   render() { 
 
     const stocks = () =>{
-      return(<Stock stockData={this.state.stockData}/>)
+      return(<Dashboard stockData={this.state.stockData}/>)
+    }
+
+    const stockWrapper = (props) =>{
+      return <Stock stockData={this.state.stockData}{...props}/>
+
     }
     return (
 
@@ -34,7 +39,7 @@ stockData : [
           <Switch>
             <Route exact path='/stocks' render={stocks} />
             <Route exact path='/about' component={About} />
-            <Route exact path='/stocks/:symbol' component={Dashboard} />
+            <Route exact path='/stocks/:symbol' render={stockWrapper} />
           </Switch>
         </div>
       </Router>
